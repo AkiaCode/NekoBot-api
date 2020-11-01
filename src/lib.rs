@@ -46,7 +46,7 @@ pub fn generate(generate: &str, text: &str, raw: &str) -> ureq::SerdeValue {
         .set("Content-Type", "application/json").call().into_json().unwrap();
         return resp["message"].to_owned();
     } else if generate == "ddlc" {
-//
+// Finsih
     } else if generate == "jpeg" {
         let resp =  ureq::get(&(BASEURL.to_owned() + "imagegen?type=" + generate + "&url=" + text + "&raw=" + raw))
         .set("Content-Type", "application/json").call().into_json().unwrap();
