@@ -12,12 +12,12 @@ const _DOCS: &str = "https://docs.nekobot.xyz/";
 pub fn image(image_type: &str, auth: &str) -> ureq::SerdeValue {
     if auth == "" {
        let resp = ureq::get(&(BASEURL.to_owned() + "/image?type=" + image_type))
-        .set("Content-Type", "application/json")
-        .set("Authorization", auth).call().into_json().unwrap();
+        .set("Content-Type", "application/json").call().into_json().unwrap();
         return resp;
     } else {
         let resp =  ureq::get(&(BASEURL.to_owned() + "/image?type=" + image_type))
-            .set("Content-Type", "application/json").call().into_json().unwrap();
+            .set("Content-Type", "application/json")
+            .set("Authorization", auth).call().into_json().unwrap();
         return resp["message"].to_owned();
     }
 }
